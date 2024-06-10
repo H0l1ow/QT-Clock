@@ -26,3 +26,6 @@ void MainWindow::showTime()
     QString time_text = time.toString("hh : mm : ss");
     ui->Digital_clock->setText(time_text);
 }
+
+
+// just for development commit
