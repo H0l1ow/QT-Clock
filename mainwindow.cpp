@@ -24,6 +24,14 @@ void MainWindow::showTime()
 {
     QTime time = QTime::currentTime();
     QString time_text = time.toString("hh : mm : ss");
+
+    time_text[8] = (time.second() % 2 == 0 ? ' ' : ':');
+    /*
+    if ((time.second() % 2 == 0))
+    {
+        time_text[8] = ' ';
+    }
+    */
     ui->Digital_clock->setText(time_text);
 }
 
