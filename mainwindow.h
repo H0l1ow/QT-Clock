@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include "clock.h"
 #include "alarm.h"
 #include "timer.h"
@@ -27,12 +29,14 @@ private slots:
     void timerFinished();
     void setAlarm();
     void startTimer();
+    void playSound(const QString path);
 
 private:
     Ui::MainWindow *ui;
     Clock *clock;
     Alarm *alarm;
     Timer *timer;
+
 };
 
 #endif // MAINWINDOW_H

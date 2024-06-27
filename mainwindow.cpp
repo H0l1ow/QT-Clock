@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -34,7 +36,7 @@ void MainWindow::updateClock(const QString &time)
 void MainWindow::handleAlarm()
 {
     ui->alarmStatusLabel->setText("Time's up!!!!!");
-    // Dodać dzwięki!!!
+    playSound("../../sounds/button.mp3");
 }
 
 void MainWindow::updateTimer(const QString &time)
@@ -45,7 +47,7 @@ void MainWindow::updateTimer(const QString &time)
 void MainWindow::timerFinished()
 {
     ui->timerStatusLabel->setText("Time's up!!!!!");
-    // Dodać dzwięki!!!!
+    playSound("../../sounds/door_open.mp3");
 }
 
 void MainWindow::setAlarm()
@@ -59,4 +61,16 @@ void MainWindow::startTimer()
     int minutes = ui->timerMinutesSpinBox->value();
     int seconds = ui->timerSecondsSpinBox->value();
     timer->startTimer(minutes, seconds);
+}
+
+
+void MainWindow::playSound(const QString path)
+{
+    QMediaPlayer* player = new QMediaPlayer;
+    QAudioOutput* audioOutput = new QAudioOutput;
+    player->setAudioOutput(audioOutput);
+    // ...
+    player->setSource(QUrl::fromLocalFile(path));
+    audioOutput->setVolume(10);
+    player->play();
 }
