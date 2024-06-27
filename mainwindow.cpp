@@ -36,7 +36,7 @@ void MainWindow::updateClock(const QString &time)
 void MainWindow::handleAlarm()
 {
     ui->alarmStatusLabel->setText("Time's up!!!!!");
-    playSound("../../sounds/button.mp3");
+    playSound("qrc:/sounds/kierwa.mp3");
 }
 
 void MainWindow::updateTimer(const QString &time)
@@ -47,7 +47,7 @@ void MainWindow::updateTimer(const QString &time)
 void MainWindow::timerFinished()
 {
     ui->timerStatusLabel->setText("Time's up!!!!!");
-    playSound("../../sounds/door_open.mp3");
+    playSound("qrc:/sounds/ohh_bro.mp3");
 }
 
 void MainWindow::setAlarm()
@@ -70,7 +70,7 @@ void MainWindow::playSound(const QString path)
     QAudioOutput* audioOutput = new QAudioOutput;
     player->setAudioOutput(audioOutput);
     // ...
-    player->setSource(QUrl::fromLocalFile(path));
-    audioOutput->setVolume(10);
+    player->setSource(QUrl(path));
+    audioOutput->setVolume(50);
     player->play();
 }
