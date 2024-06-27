@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new/sounds">
+        <file>sounds/button.mp3</file>
+        <file>sounds/kierwa.mp3</file>
+        <file>sounds/ohh_bro.mp3</file>
+        <file>sounds/sound_1.mp3</file>
+    </qresource>
+</RCC>

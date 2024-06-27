@@ -33,8 +33,8 @@ void MainWindow::updateClock(const QString &time)
 
 void MainWindow::handleAlarm()
 {
-    ui->alarmStatusLabel->setText("Alarm ringing!");
-    // Tutaj możesz dodać dodatkowe działania, np. odtwarzanie dźwięku
+    ui->alarmStatusLabel->setText("Time's up!!!!!");
+    // Dodać dzwięki!!!
 }
 
 void MainWindow::updateTimer(const QString &time)
@@ -44,8 +44,8 @@ void MainWindow::updateTimer(const QString &time)
 
 void MainWindow::timerFinished()
 {
-    ui->timerStatusLabel->setText("Time's up!");
-    // Tutaj możesz dodać dodatkowe działania, np. odtwarzanie dźwięku
+    ui->timerStatusLabel->setText("Time's up!!!!!");
+    // Dodać dzwięki!!!!
 }
 
 void MainWindow::setAlarm()
