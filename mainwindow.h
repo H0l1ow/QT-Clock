@@ -28,6 +28,7 @@ private slots:
     void updateTimer(const QString &time);
     void timerFinished();
     void setAlarm();
+    void resetAlarm();
     void startTimer();
     void playSound(const QString path);
 

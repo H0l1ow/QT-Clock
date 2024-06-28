@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, &Timer::timerFinished, this, &MainWindow::timerFinished);
 
     connect(ui->setAlarmButton, &QPushButton::clicked, this, &MainWindow::setAlarm);
+    connect(ui->resetAlarmButton, &QPushButton::clicked, this, &MainWindow::resetAlarm);
     connect(ui->startTimerButton, &QPushButton::clicked, this, &MainWindow::startTimer);
 }
 
@@ -54,6 +55,13 @@ void MainWindow::setAlarm()
 {
     alarm->setAlarmTime(ui->alarmTimeEdit->time());
     ui->alarmStatusLabel->setText("Alarm set for " + alarm->getAlarmTime().toString("hh:mm:ss"));
+}
+
+void MainWindow::resetAlarm()
+{
+    ui->alarmStatusLabel->setText("Alarm");
+    alarm->setAlarmTime(QTime (25,0,0));
+
 }
 
 void MainWindow::startTimer()
