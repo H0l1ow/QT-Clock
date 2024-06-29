@@ -19,13 +19,13 @@
      <rect>
       <x>40</x>
       <y>30</y>
-      <width>621</width>
-      <height>91</height>
+      <width>781</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>40</pointsize>
+      <pointsize>66</pointsize>
       <italic>true</italic>
       <bold>true</bold>
      </font>
@@ -130,9 +130,9 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>220</y>
+      <y>270</y>
       <width>291</width>
-      <height>381</height>
+      <height>331</height>
      </rect>
     </property>
    </widget>
@@ -162,6 +162,37 @@
      <string>remove</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_pic">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>100</y>
+      <width>511</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>240</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>All Alarms</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -169,7 +200,7 @@
      <x>0</x>
      <y>0</y>
      <width>1158</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

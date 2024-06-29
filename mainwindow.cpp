@@ -1,11 +1,18 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QPixmap>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->setStyleSheet("background-color: white;");
+
+    QPixmap pix(":/image/test.jpg");
+    ui->label_pic->setPixmap(pix);
+    ui->label_pic->setPixmap(pix.scaled(500,500,Qt::KeepAspectRatio));
 
     clock = new Clock(this);
     connect(clock, &Clock::timeChanged, this, &MainWindow::updateClock);
