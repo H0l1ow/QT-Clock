@@ -27,8 +27,11 @@ private slots:
     void handleAlarm();
     void updateTimer(const QString &time);
     void timerFinished();
-    void setAlarm();
+    void addAlarm();
+    void removeAlarm();
     void resetAlarm();
+    void updateAlarmList();
+    void highlightActiveAlarm();
     void startTimer();
     void playSound(const QString path);
 
@@ -37,7 +40,6 @@ private:
     Clock *clock;
     Alarm *alarm;
     Timer *timer;
-
 };
 
 #endif // MAINWINDOW_H

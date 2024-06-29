@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -14,14 +12,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     alarm = new Alarm(this);
     connect(alarm, &Alarm::alarmRinging, this, &MainWindow::handleAlarm);
+    connect(alarm, &Alarm::alarmsUpdated, this, &MainWindow::updateAlarmList);
+    connect(alarm, &Alarm::alarmStopped, this, &MainWindow::highlightActiveAlarm);
 
     timer = new Timer(this);
     connect(timer, &Timer::timerUpdated, this, &MainWindow::updateTimer);
     connect(timer, &Timer::timerFinished, this, &MainWindow::timerFinished);
 
-    connect(ui->setAlarmButton, &QPushButton::clicked, this, &MainWindow::setAlarm);
+    connect(ui->addAlarmButton, &QPushButton::clicked, this, &MainWindow::addAlarm);
+    connect(ui->removeAlarmButton, &QPushButton::clicked, this, &MainWindow::removeAlarm);
     connect(ui->resetAlarmButton, &QPushButton::clicked, this, &MainWindow::resetAlarm);
     connect(ui->startTimerButton, &QPushButton::clicked, this, &MainWindow::startTimer);
+
+    updateAlarmList();
 }
 
 MainWindow::~MainWindow()
@@ -51,17 +54,40 @@ void MainWindow::timerFinished()
     playSound("qrc:/sounds/ohh_bro.mp3");
 }
 
-void MainWindow::setAlarm()
+void MainWindow::addAlarm()
 {
-    alarm->setAlarmTime(ui->alarmTimeEdit->time());
-    ui->alarmStatusLabel->setText("Alarm set for " + alarm->getAlarmTime().toString("hh:mm:ss"));
+    alarm->addAlarm(ui->alarmTimeEdit->time());
+}
+
+void MainWindow::removeAlarm()
+{
+    int currentIndex = ui->alarmListWidget->currentRow();
+    if (currentIndex != -1) {
+        alarm->removeAlarm(currentIndex);
+    }
 }
 
 void MainWindow::resetAlarm()
 {
     ui->alarmStatusLabel->setText("Alarm");
-    alarm->setAlarmTime(QTime (25,0,0));
+    alarm->resetAlarm();
+}
 
+void MainWindow::updateAlarmList()
+{
+    ui->alarmListWidget->clear();
+    QList<QDateTime> alarms = alarm->getAlarms();
+    for (const QDateTime &alarmTime : alarms) {
+        ui->alarmListWidget->addItem(alarmTime.toString("hh:mm:ss (dd-MM-yyyy)"));
+    }
+}
+
+void MainWindow::highlightActiveAlarm()  // podswietlanie wykonanych alarmow, do dokonczenia
+{
+    for (int i = 0; i < ui->alarmListWidget->count(); ++i) {
+        QListWidgetItem *item = ui->alarmListWidget->item(i);
+        item->setBackground(Qt::green);
+    }
 }
 
 void MainWindow::startTimer()
@@ -71,13 +97,11 @@ void MainWindow::startTimer()
     timer->startTimer(minutes, seconds);
 }
 
-
-void MainWindow::playSound(const QString path)
+void MainWindow::playSound(const QString path) // tu jest problem nakladajacych sie dzwiekow, play sound twozy caly czas nowe obiekty
 {
     QMediaPlayer* player = new QMediaPlayer;
     QAudioOutput* audioOutput = new QAudioOutput;
     player->setAudioOutput(audioOutput);
-    // ...
     player->setSource(QUrl(path));
     audioOutput->setVolume(50);
     player->play();

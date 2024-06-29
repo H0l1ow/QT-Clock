@@ -19,13 +19,14 @@
      <rect>
       <x>40</x>
       <y>30</y>
-      <width>221</width>
+      <width>621</width>
       <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>40</pointsize>
+      <italic>true</italic>
       <bold>true</bold>
      </font>
     </property>
@@ -36,11 +37,16 @@
    <widget class="QLabel" name="alarmStatusLabel">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>90</y>
-      <width>151</width>
-      <height>71</height>
+      <x>30</x>
+      <y>380</y>
+      <width>301</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Alarm</string>
@@ -49,56 +55,48 @@
    <widget class="QTimeEdit" name="alarmTimeEdit">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>190</y>
-      <width>221</width>
-      <height>71</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="setAlarmButton">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>290</y>
-      <width>111</width>
+      <x>30</x>
+      <y>430</y>
+      <width>91</width>
       <height>41</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>Set Alarm</string>
     </property>
    </widget>
    <widget class="QLabel" name="timerStatusLabel">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>141</width>
-      <height>71</height>
+      <x>30</x>
+      <y>230</y>
+      <width>251</width>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Timer</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="timerMinutesSpinBox">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>250</y>
-      <width>81</width>
-      <height>61</height>
+      <y>270</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
    <widget class="QSpinBox" name="timerSecondsSpinBox">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>250</y>
-      <width>71</width>
-      <height>61</height>
+      <x>90</x>
+      <y>270</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
    </widget>
@@ -112,20 +110,56 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Set Timer</string>
     </property>
    </widget>
    <widget class="QPushButton" name="resetAlarmButton">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>290</y>
-      <width>101</width>
+      <x>30</x>
+      <y>560</y>
+      <width>111</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Reset Alarm</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="alarmListWidget">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>220</y>
+      <width>291</width>
+      <height>381</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addAlarmButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>480</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>add</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removeAlarmButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>520</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>remove</string>
     </property>
    </widget>
   </widget>
@@ -135,7 +169,7 @@
      <x>0</x>
      <y>0</y>
      <width>1158</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
