@@ -40,8 +40,6 @@ private:
     Clock *clock;
     Alarm *alarm;
     Timer *timer;
-    QMediaPlayer* player = new QMediaPlayer;
-    QAudioOutput* audioOutput = new QAudioOutput;
 };
 
 #endif // MAINWINDOW_H
