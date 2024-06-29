@@ -78,6 +78,7 @@ void MainWindow::removeAlarm()
 void MainWindow::resetAlarm()
 {
     ui->alarmStatusLabel->setText("Alarm");
+    player->stop();
     alarm->resetAlarm();
 }
 
