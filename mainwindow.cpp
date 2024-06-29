@@ -40,7 +40,8 @@ void MainWindow::updateClock(const QString &time)
 void MainWindow::handleAlarm()
 {
     ui->alarmStatusLabel->setText("Time's up!!!!!");
-    playSound("qrc:/sounds/kierwa.mp3");
+    if (player->isPlaying() != 1)
+        playSound("qrc:/sounds/kierwa.mp3");
 }
 
 void MainWindow::updateTimer(const QString &time)
@@ -99,8 +100,6 @@ void MainWindow::startTimer()
 
 void MainWindow::playSound(const QString path) // tu jest problem nakladajacych sie dzwiekow, play sound twozy caly czas nowe obiekty
 {
-    QMediaPlayer* player = new QMediaPlayer;
-    QAudioOutput* audioOutput = new QAudioOutput;
     player->setAudioOutput(audioOutput);
     player->setSource(QUrl(path));
     audioOutput->setVolume(50);
